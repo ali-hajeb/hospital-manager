@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+:root {
+    /* --background: #ffffff; */
+    /* --foreground: #171717; */
+}
+
+/* @media (prefers-color-scheme: dark) { */
+/*   :root { */
+/*     --background: #0a0a0a; */
+/*     --foreground: #ededed; */
+/*   } */
+/* } */
+
+html, body {
+    min-height: 100vh;
+}
+
+body {
+    background-color: var(--mantine-color-violet-5);
+    font-family: Vazirmatn, Arial, Helvetica, sans-serif;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.mantine-Container-root, .mantine-Center-root {
+    min-height: 100vh;
+}
+
+.transparent-bg-icon {
+  background: transparent !important;
+  border: 0 !important;
+}
+

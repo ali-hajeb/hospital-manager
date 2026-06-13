@@ -1,0 +1,6 @@
+.tabPane {
+    border-bottom: calc(.0625rem * var(--mantine-scale)) solid var(--tab-border-color);
+    border-right: calc(.0625rem * var(--mantine-scale)) solid var(--tab-border-color);
+    border-left: calc(.0625rem * var(--mantine-scale)) solid var(--tab-border-color);
+    border-radius: var(--tab-radius);
+}
