@@ -141,7 +141,7 @@ export default function TableContainer<T extends IBaseModelObject>({
                                                         variant="transparent"
                                                         id={item._id}
                                                         c={'gray'}
-                                                        title="حذف"
+                                                        title="مشاهده"
                                                         loading={isLoading}
                                                         onClick={btnViewOnClickHandler}>
                                                         <IconEye size={16} />

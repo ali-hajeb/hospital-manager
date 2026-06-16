@@ -1,6 +1,6 @@
 'use client'
 import { Dispatch, SetStateAction, useContext, useEffect, useMemo, useState } from "react";
-import { Button, Card, Grid, Group, NumberInput, Select, Stack, Text } from "@mantine/core";
+import { ActionIcon, Button, Card, Grid, Group, NumberInput, Select, Stack, Text } from "@mantine/core";
 import UserContext from "@/src/contexts/UserContext";
 import moment from 'jalali-moment';
 import { ILocation, locationActions } from "@/src/lib/module/location";
@@ -11,7 +11,7 @@ import { recordSchemaFields } from "./constants";
 import { IButtonState } from "@/src/common/types/button.types";
 import { IRecordPopulated } from "@/src/lib/module/common/types";
 import { INewRecord, recordActions } from "@/src/lib/module/record";
-import { IconCalendar, IconCheck, IconExclamationCircle } from "@tabler/icons-react";
+import { IconCalendar, IconCheck, IconExclamationCircle, IconPlus, IconPrinter, IconSearch } from "@tabler/icons-react";
 import { useDisclosure } from "@mantine/hooks";
 import { toFarsiNumber } from "@/src/utils/number";
 import { RecordForm, SearchForm } from "./type";
@@ -229,7 +229,7 @@ export default function Dashboard({
             })
                 .catch(error => {
                     console.log(error);
-                    setSubmitError(error.message);
+                    setSubmitError(error.response.data.message);
                     setBtnState({color: 'red', icon: <IconExclamationCircle size={16} />});
                 })
                 .finally(() => {
@@ -292,9 +292,9 @@ export default function Dashboard({
                         key={searchForm.key('year')}
                         {...searchForm.getInputProps('year')}
                     />
-                    <Button type="submit">جستجو</Button>
-                    <Button onClick={newrecordHandler}>افزودن</Button>
-                    <Button variant="outline">چاپ</Button>
+                    <ActionIcon type="submit" size={'input-sm'}><IconSearch /></ActionIcon>
+                    <ActionIcon onClick={newrecordHandler} size={'input-sm'}><IconPlus /></ActionIcon>
+                    <ActionIcon variant="outline" size={'input-sm'}><IconPrinter /></ActionIcon>
                     <div className="flex-grow-1"></div>
                     <Group>
                         <IconCalendar color="gray" size={18} />

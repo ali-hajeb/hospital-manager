@@ -67,7 +67,20 @@ export async function PATCH(req: NextRequest) {
         const body = await req.json();
         const { _id, ...updatedData } = body as IRecord;
 
-        const record = await Record.findByIdAndUpdate(_id, updatedData, { new: true }).populate(['location']);
+        const existingRecord = await Record.findOne({ 
+            year: updatedData.year,
+            month: updatedData.month,
+            hospital: updatedData.hospital,
+            location: updatedData.location 
+        });
+
+        console.log(existingRecord?._id.toString(), _id, existingRecord?._id.toString() !== _id);
+
+        if (existingRecord && existingRecord._id.toString() !== _id) {
+            return NextResponse.json({ code: 400, message: 'ردیف قبلاً ثبت شده‌است!', existingRecord }, { status: 400 });
+        }
+
+        const record = await Record.findByIdAndUpdate(_id, updatedData, { returnDocument: 'after' }).populate(['location']);
         return NextResponse.json({ code: 200, message: '', record }, { status: 200 });
     } catch (error) {
         return NextResponse.json({ code: 400, message: '', data: error}, { status: 400 });
