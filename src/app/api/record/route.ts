@@ -8,7 +8,12 @@ export async function POST(req: NextRequest) {
     try {
         const body = await req.json();
         const data = body as INewRecord;
-        const existingRecord = await Record.findOne({ year: data.year, month: data.month })
+        const existingRecord = await Record.findOne({ 
+            year: data.year,
+            month: data.month,
+            hospital: data.hospital,
+            location: data.location 
+        });
         if (existingRecord) {
             return NextResponse.json({ code: 400, message: 'ردیف قبلاً ثبت شده‌است!', existingRecord }, { status: 400 });
         }

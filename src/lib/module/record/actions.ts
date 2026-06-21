@@ -14,7 +14,7 @@ export async function deleteRecord(id: string) {
     return axiosInstance.delete(`/record/${id}`);
 }
 
-export async function getRecords(params?: Record<string, string | undefined>) {
+export async function getRecords(params?: Record<string, string | number | undefined>) {
     return axiosInstance.get('/record', { params })
 }
 

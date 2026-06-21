@@ -7,10 +7,13 @@ export async function POST(req: NextRequest) {
     try {
         const body = await req.json();
         const { name, city, address } = body as INewLocation;
+        console.log(name, city, address);
 
         const location = await Location.create({ name, city, address });
+        console.log('location', location);
         return NextResponse.json({ code: 200, message: '', location }, { status: 200 });
     } catch (error) {
+        console.log(JSON.stringify(error));
         return NextResponse.json({ code: 400, message: '', data: error}, { status: 400 });
     }
 }

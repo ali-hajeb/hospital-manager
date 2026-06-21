@@ -45,6 +45,13 @@ export const recordSchemaFields: ITableViewField<IRecordPopulated>[] = [
         viewCol: false,
     },
     { 
+        key: 'rDoc',
+        type: 'number',
+        title: 'درآمد جز حرفه‌ای پزشکان',
+        alt: '', 
+        viewCol: true,
+    },
+    { 
         key: 'vTotal',
         type: 'number',
         title: 'تعداد کل ویزیت‌ها',
@@ -132,13 +139,6 @@ export const recordSchemaFields: ITableViewField<IRecordPopulated>[] = [
         key: 'totalRev',
         type: 'none',
         title: 'درآمد کل',
-        alt: '', 
-        viewCol: true,
-    },
-    { 
-        key: 'rDoc',
-        type: 'none',
-        title: 'جز حرفه‌ای',
         alt: '', 
         viewCol: true,
     },

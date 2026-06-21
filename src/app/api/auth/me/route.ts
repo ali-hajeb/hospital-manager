@@ -1,10 +1,12 @@
 import '@/src/lib/module/location/model';
+import User from '@/src/lib/module/user/model';
 import { IAuthorizedRequst, authMiddleware } from "@/src/lib/authentication/auth";
 import { NextRequest, NextResponse } from "next/server";
-import User from '@/src/lib/module/user/model';
+import dbConnect from '@/src/lib/database';
 
 export async function GET(req: NextRequest) {
     try {
+        await dbConnect();
         const res = authMiddleware(req);
         if (res.status !== 200) {
             return res;

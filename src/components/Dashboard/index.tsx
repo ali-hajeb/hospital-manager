@@ -83,11 +83,14 @@ export default function Dashboard({
     });
 
     const searchFormSubmitHandler = ({ location, year }: SearchForm) => {
+        const query: Record<string, string> = {};
+        if (location) query.location = location;
+        if (year) query.year = year;
+        searchHandler({...query, limit: MAX_ROWS})
     }
 
     useEffect(() => {
         if (userContext) {
-            console.log("lll", location);
             const filter = userContext.role === 'MANAGER' || userContext.role === 'MANAGER_VIEW_ONLY' ? 
                 location : userContext.location._id;
             recordActions.getRecords({ location: filter, skip: page.toString(), sort: '{ "hospital": -1 }' })
